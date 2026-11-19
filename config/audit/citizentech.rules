@@ -1,0 +1,26 @@
+## Regras de auditoria CitizenTech (auditd)
+## Consultar: ausearch -k <chave> -i     Resumo: aureport -k -i
+
+# Alterações na aplicação e nas configurações
+-w /opt/citizentech/ -p wa -k citizentech_app
+-w /etc/citizentech/ -p wa -k citizentech_config
+-w /etc/systemd/system/ -p wa -k citizentech_systemd
+-w /etc/nginx/ -p wa -k citizentech_nginx
+
+# Alterações de rede, DNS e hostname
+-w /etc/hosts -p wa -k citizentech_rede
+-w /etc/hostname -p wa -k citizentech_rede
+-w /etc/systemd/network/ -p wa -k citizentech_rede
+-w /etc/systemd/resolved.conf.d/ -p wa -k citizentech_rede
+-w /etc/netplan/ -p wa -k citizentech_rede
+
+# Firewall e privilégios
+-w /etc/ufw/ -p wa -k citizentech_firewall
+-w /etc/sudoers -p wa -k citizentech_privilegio
+-w /etc/sudoers.d/ -p wa -k citizentech_privilegio
+
+# Processos mortos com SIGKILL (kill -9) - registra o teste de falha
+-a always,exit -F arch=b64 -S kill -F a1=9 -k citizentech_kill
+
+# Execução dos scripts de provisionamento e monitoramento
+-w /opt/citizentech/bin/ -p x -k citizentech_exec

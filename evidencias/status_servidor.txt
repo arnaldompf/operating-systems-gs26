@@ -1,0 +1,108 @@
+================ ALERTA CÓRREGO - alerta-corrego-srv01 - 2026-11-19 20:10:24 ================
+
+## Rede
+Hostname:   alerta-corrego-srv01.alertacorrego.local
+Interface:  ens3             UP             172.18.3.210/20 metric 100 
+Interface:  citz0            UNKNOWN        10.50.0.10/24 
+Nome app:   app.alertacorrego.local -> 10.50.0.10
+DNS:        1.1.1.1 8.8.8.8
+Firewall:   Status: active
+
+## Serviços
+  alerta-corrego                   active     reinícios: 1
+  alerta-corrego-mqtt              active     reinícios: 0
+  nginx                            active     reinícios: 0
+  citizentech-monitor              active     reinícios: 1
+  citizentech-healthcheck.timer    active     reinícios: 
+  auditd                           active     reinícios: 0
+
+## Últimas métricas (CPU;MEM;DISCO)
+2026-11-19 20:09:11;50;89;15;
+2026-11-19 20:09:27;50;96;15;
+2026-11-19 20:09:43;5;20;15;
+2026-11-19 20:09:59;0;20;89;
+2026-11-19 20:10:15;0;21;15;
+
+## Últimos alertas
+2026-11-19 20:07:39 [ALERTA] [systemd] Serviço alerta-corrego.service entrou em estado de falha: signal
+2026-11-19 20:07:44 [ALERTA] [systemd] Serviço citizentech-monitor.service entrou em estado de falha: signal
+2026-11-19 20:07:50 [ALERTA] CPU em 94% (limite 80%) - maior consumo: stress-ng-cpu (pid 171383, 98.9%)
+2026-11-19 20:08:55 [RECUPERADO] CPU voltou ao normal: 0% (limite 80%)
+2026-11-19 20:09:11 [ALERTA] MEMORIA em 89% (limite 80%) - maior consumo: stress-ng-vm (pid 171608, 66.1%)
+2026-11-19 20:09:43 [RECUPERADO] MEMORIA voltou ao normal: 20% (limite 80%)
+2026-11-19 20:09:59 [ALERTA] DISCO em 89% (limite 85%) - partição /, livre: 2.2G
+2026-11-19 20:10:15 [RECUPERADO] DISCO voltou ao normal: 15% (limite 85%)
+
+## Aplicação
+  Risco: NORMAL | nível 11.9% | chuva 0.0 mm/h | origem mqtt
+  Painel: http://201.23.78.192/
+
+● alerta-corrego.service - Alerta Corrego - painel web CitizenTech
+     Loaded: loaded (/etc/systemd/system/alerta-corrego.service; enabled; preset: enabled)
+     Active: active (running) since Thu 2026-11-19 20:07:42 -03; 2min 42s ago
+   Main PID: 171263 (gunicorn)
+      Tasks: 3 (limit: 2314)
+     Memory: 47.7M (peak: 48.1M)
+        CPU: 437ms
+     CGroup: /system.slice/alerta-corrego.service
+             ├─171263 /opt/citizentech/alerta-corrego/venv/bin/python3 /opt/citizentech/alerta-corrego/venv/bin/gunicorn --workers 2 --bind 10.50.0.10:8000 --access-logfile /var/log/citizentech/app/access.log --error-logfile /var/log/citizentech/app/error.log app:app
+             ├─171273 /opt/citizentech/alerta-corrego/venv/bin/python3 /opt/citizentech/alerta-corrego/venv/bin/gunicorn --workers 2 --bind 10.50.0.10:8000 --access-logfile /var/log/citizentech/app/access.log --error-logfile /var/log/citizentech/app/error.log app:app
+             └─171274 /opt/citizentech/alerta-corrego/venv/bin/python3 /opt/citizentech/alerta-corrego/venv/bin/gunicorn --workers 2 --bind 10.50.0.10:8000 --access-logfile /var/log/citizentech/app/access.log --error-logfile /var/log/citizentech/app/error.log app:app
+
+● citizentech-monitor.service - CitizenTech - monitor de infraestrutura
+     Loaded: loaded (/etc/systemd/system/citizentech-monitor.service; enabled; preset: enabled)
+     Active: active (running) since Thu 2026-11-19 20:07:49 -03; 2min 35s ago
+   Main PID: 171339 (bash)
+     Status: "CPU 0% | MEM 21% | DISCO 15%"
+      Tasks: 2 (limit: 2314)
+     Memory: 5.1M (peak: 7.4M)
+        CPU: 676ms
+     CGroup: /system.slice/citizentech-monitor.service
+             ├─171339 bash /opt/citizentech/bin/monitor.sh
+             └─171925 sleep 15
+
+Status: active
+Logging: on (low)
+Default: deny (incoming), allow (outgoing), disabled (routed)
+New profiles: skip
+
+To                         Action      From
+--                         ------      ----
+22/tcp                     ALLOW IN    Anywhere                  
+80/tcp                     ALLOW IN    Anywhere                  
+8000/tcp on ens3           DENY IN     Anywhere                  
+22/tcp (v6)                ALLOW IN    Anywhere (v6)             
+80/tcp (v6)                ALLOW IN    Anywhere (v6)             
+8000/tcp (v6) on ens3      DENY IN     Anywhere (v6)             
+
+
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+ens3             UP             172.18.3.210/20 metric 100 2801:80:3ea3:d2cb::157/128 fe80::f816:3eff:fe94:5f39/64 
+citz0            UNKNOWN        10.50.0.10/24 fe80::50bc:92ff:fe33:deae/64 
+
+Global
+           Protocols: -LLMNR -mDNS -DNSOverTLS DNSSEC=no/unsupported
+    resolv.conf mode: stub
+  Current DNS Server: 1.1.1.1
+         DNS Servers: 1.1.1.1 8.8.8.8
+Fallback DNS Servers: 9.9.9.9
+          DNS Domain: ~.
+
+Link 2 (ens3)
+    Current Scopes: DNS
+         Protocols: +DefaultRoute -LLMNR -mDNS -DNSOverTLS DNSSEC=no/unsupported
+Current DNS Server: 58.84.12.28
+
+127.0.0.1 localhost
+
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+# BEGIN CITIZENTECH
+127.0.1.1     alerta-corrego-srv01.alertacorrego.local alerta-corrego-srv01
+10.50.0.10    app.alertacorrego.local app
+# END CITIZENTECH

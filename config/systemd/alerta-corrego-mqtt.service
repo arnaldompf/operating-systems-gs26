@@ -1,0 +1,26 @@
+# Recebe as leituras do ESP32 (Wokwi) via MQTT e grava no banco da aplicação
+[Unit]
+Description=Alerta Corrego - receptor MQTT do sensor ESP32
+After=network-online.target
+Wants=network-online.target
+StartLimitIntervalSec=300
+StartLimitBurst=10
+OnFailure=citizentech-falha@%n.service
+
+[Service]
+Type=simple
+User=${APP_USER}
+Group=${APP_USER}
+WorkingDirectory=${APP_DIR}
+EnvironmentFile=/etc/citizentech/app.env
+ExecStart=${APP_DIR}/venv/bin/python -u mqtt_worker.py
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=${APP_DATA_DIR}
+
+[Install]
+WantedBy=multi-user.target

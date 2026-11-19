@@ -1,0 +1,114 @@
+2026-11-19 20:10:23 [INFO] [relatorio_auditoria] ===== Iniciando relatorio_auditoria (usuário: ubuntu, run_id: 20261119201023-172011) =====
+==================================================================
+ RELATÓRIO DE AUDITORIA - alerta-corrego-srv01 - 2026-11-19 20:10:23
+==================================================================
+
+### 1. Execuções de scripts (últimas 25) - /var/log/citizentech/audit.log
+2026-11-19 20:05:37 run_id=20261119200537-169596 user=root host=alerta-corrego-srv01 script=healthcheck evento=FIM status=SUCESSO
+2026-11-19 20:06:38 run_id=20261119200638-169737 user=root host=alerta-corrego-srv01 script=healthcheck evento=INICIO args=""
+2026-11-19 20:06:38 run_id=20261119200638-169737 user=root host=alerta-corrego-srv01 script=healthcheck evento=FIM status=SUCESSO
+2026-11-19 20:07:05 run_id=20261119200705-169944 user=ubuntu host=alerta-corrego-srv01 script=provision evento=INICIO args="2 3"
+2026-11-19 20:07:05 run_id=20261119200705-169962 user=ubuntu host=alerta-corrego-srv01 script=02_app evento=INICIO args=""
+2026-11-19 20:07:19 run_id=20261119200705-169962 user=ubuntu host=alerta-corrego-srv01 script=02_app evento=FIM status=SUCESSO
+2026-11-19 20:07:19 run_id=20261119200719-170715 user=ubuntu host=alerta-corrego-srv01 script=03_monitoramento evento=INICIO args=""
+ run_id=20261119062227-60125 user=root host=alerta-corrego-srv01 script=monitor evento=FIM status=SUCESSO
+2026-11-19 20:07:20 run_id=20261119200720-170874 user=root host=alerta-corrego-srv01 script=monitor evento=INICIO args=""
+2026-11-19 20:07:38 run_id=20261119200738-171026 user=root host=alerta-corrego-srv01 script=healthcheck evento=INICIO args=""
+2026-11-19 20:07:38 run_id=20261119200719-170715 user=ubuntu host=alerta-corrego-srv01 script=03_monitoramento evento=FIM status=SUCESSO
+2026-11-19 20:07:38 run_id=20261119200738-171026 user=root host=alerta-corrego-srv01 script=healthcheck evento=FIM status=SUCESSO
+2026-11-19 20:07:39 run_id=20261119200705-169944 user=ubuntu host=alerta-corrego-srv01 script=provision evento=FIM status=SUCESSO
+2026-11-19 20:07:39 run_id=20261119200739-171196 user=ubuntu host=alerta-corrego-srv01 script=teste_falha evento=INICIO args="todos"
+2026-11-19 20:07:39 run_id=20261119200739-171226 user=root host=alerta-corrego-srv01 script=registrar_falha evento=INICIO args="alerta-corrego.service"
+2026-11-19 20:07:39 run_id=20261119200739-171226 user=root host=alerta-corrego-srv01 script=registrar_falha evento=FIM status=SUCESSO
+2026-11-19 20:07:44 run_id=20261119200744-171293 user=root host=alerta-corrego-srv01 script=registrar_falha evento=INICIO args="citizentech-monitor.service"
+2026-11-19 20:07:44 run_id=20261119200744-171293 user=root host=alerta-corrego-srv01 script=registrar_falha evento=FIM status=SUCESSO
+2026-11-19 20:07:49 run_id=20261119200749-171339 user=root host=alerta-corrego-srv01 script=monitor evento=INICIO args=""
+2026-11-19 20:08:39 run_id=20261119200839-171506 user=root host=alerta-corrego-srv01 script=healthcheck evento=INICIO args=""
+2026-11-19 20:08:39 run_id=20261119200839-171506 user=root host=alerta-corrego-srv01 script=healthcheck evento=FIM status=SUCESSO
+2026-11-19 20:09:43 run_id=20261119200943-171708 user=root host=alerta-corrego-srv01 script=healthcheck evento=INICIO args=""
+2026-11-19 20:09:43 run_id=20261119200943-171708 user=root host=alerta-corrego-srv01 script=healthcheck evento=FIM status=SUCESSO
+2026-11-19 20:10:17 run_id=20261119200739-171196 user=ubuntu host=alerta-corrego-srv01 script=teste_falha evento=FIM status=SUCESSO
+2026-11-19 20:10:23 run_id=20261119201023-172011 user=ubuntu host=alerta-corrego-srv01 script=relatorio_auditoria evento=INICIO args=""
+
+### 2. Falhas de execução
+(nenhuma)
+
+### 3. Alertas de infraestrutura (últimos 20) - /var/log/citizentech/alertas.log
+2026-11-19 01:18:57 [ALERTA] [systemd] Serviço alerta-corrego.service entrou em estado de falha: signal
+2026-11-19 01:19:02 [ALERTA] [systemd] Serviço citizentech-monitor.service entrou em estado de falha: signal
+2026-11-19 01:22:05 [ALERTA] DISCO em 89% (limite 85%) - partição /, livre: 2.2G
+2026-11-19 01:22:21 [RECUPERADO] DISCO voltou ao normal: 14% (limite 85%)
+2026-11-19 01:22:53 [ALERTA] CPU em 100% (limite 80%) - maior consumo: stress-ng-cpu (pid 14070, 99.8%)
+2026-11-19 01:23:42 [RECUPERADO] CPU voltou ao normal: 22% (limite 80%)
+2026-11-19 01:23:58 [ALERTA] MEMORIA em 88% (limite 80%) - maior consumo: stress-ng-vm (pid 14309, 68.1%)
+2026-11-19 01:24:30 [RECUPERADO] MEMORIA voltou ao normal: 19% (limite 80%)
+2026-11-19 06:22:28 [ALERTA] Serviço nginx está deactivating
+2026-11-19 06:22:44 [RECUPERADO] Serviço nginx voltou a ficar ativo
+2026-11-19 20:07:39 [ALERTA] [systemd] Serviço alerta-corrego.service entrou em estado de falha: signal
+2026-11-19 20:07:44 [ALERTA] [systemd] Serviço citizentech-monitor.service entrou em estado de falha: signal
+2026-11-19 20:07:50 [ALERTA] CPU em 94% (limite 80%) - maior consumo: stress-ng-cpu (pid 171383, 98.9%)
+2026-11-19 20:08:55 [RECUPERADO] CPU voltou ao normal: 0% (limite 80%)
+2026-11-19 20:09:11 [ALERTA] MEMORIA em 89% (limite 80%) - maior consumo: stress-ng-vm (pid 171608, 66.1%)
+2026-11-19 20:09:43 [RECUPERADO] MEMORIA voltou ao normal: 20% (limite 80%)
+2026-11-19 20:09:59 [ALERTA] DISCO em 89% (limite 85%) - partição /, livre: 2.2G
+2026-11-19 20:10:15 [RECUPERADO] DISCO voltou ao normal: 15% (limite 85%)
+
+### 4. Totais de alertas por tipo
+      4 [ALERTA] 
+      2 [ALERTA] MEMORIA
+      2 [ALERTA] DISCO
+      2 [ALERTA] CPU
+      1 [ALERTA] Servi
+
+### 5. auditd - eventos por chave
+total  key
+1101  citizentech_kill
+1083  citizentech_exec
+148  citizentech_app
+143  citizentech_nginx
+38  citizentech_config
+35  citizentech_firewall
+31  citizentech_rede
+22  citizentech_systemd
+10  citizentech_privilegio
+
+### 6. auditd - alterações de rede/DNS/hostname/firewall (últimas)
+At 01:18:01 11/19/26 ubuntu, acting as root, successfully opened-file /etc/systemd/network/10-citz0.network using bash
+At 01:18:03 11/19/26 ubuntu, acting as root, successfully renamed /etc/sedMP0uW1 to /etc/hosts using /usr/bin/sed
+At 01:18:03 11/19/26 ubuntu, acting as root, successfully renamed /etc/sedAG4ghB to /etc/hosts using /usr/bin/sed
+At 01:18:03 11/19/26 ubuntu, acting as root, successfully opened-file /etc/hosts using bash
+At 01:18:03 11/19/26 ubuntu, acting as root, successfully opened-file /etc/systemd/resolved.conf.d/10-citizentech.conf using bash
+At 20:07:06 11/19/26 ubuntu, acting as root, successfully opened-file /etc/ufw/applications.d/nginx.dpkg-new using /usr/bin/dpkg
+At 20:07:06 11/19/26 ubuntu, acting as root, unsuccessfully deleted /etc/ufw/ using /usr/bin/dpkg
+At 20:07:06 11/19/26 ubuntu, acting as root, successfully changed-file-ownership-of /etc/ufw/applications.d/nginx.dpkg-new to root using /usr/bin/dpkg
+At 20:07:06 11/19/26 ubuntu, acting as root, successfully changed-file-permissions-of /etc/ufw/applications.d/nginx.dpkg-new to 0644 using /usr/bin/dpkg
+At 20:07:06 11/19/26 ubuntu, acting as root, successfully deleted /etc/ufw/applications.d/nginx.dpkg-new using /usr/bin/dpkg
+
+### 7. auditd - processos mortos com kill -9 (teste de falha)
+At 20:02:25 11/19/26 system, acting as root, successfully killed-list-of-pids using /usr/sbin/sshd
+At 20:02:50 11/19/26 system, acting as root, successfully killed-list-of-pids using /usr/sbin/sshd
+At 20:05:40 11/19/26 system, acting as root, successfully killed-list-of-pids using /usr/sbin/sshd
+At 20:06:03 11/19/26 system, acting as root, successfully killed-list-of-pids using /usr/sbin/sshd
+At 20:06:38 11/19/26 system, acting as root, successfully killed-list-of-pids using /usr/sbin/sshd
+At 20:07:39 11/19/26 ubuntu, acting as root, successfully killed-list-of-pids using bash
+At 20:07:44 11/19/26 ubuntu, acting as root, successfully killed-list-of-pids using bash
+At 20:07:51 11/19/26 system, acting as root, successfully killed-list-of-pids using /usr/sbin/sshd
+At 20:08:06 11/19/26 system, acting as root, successfully killed-list-of-pids using /usr/sbin/sshd
+At 20:08:52 11/19/26 system, acting as root, successfully killed-list-of-pids using /usr/sbin/sshd
+
+### 8. Estado atual dos serviços
+UNIT                          LOAD   ACTIVE SUB     DESCRIPTION
+alerta-corrego-mqtt.service   loaded active running Alerta Corrego - receptor MQTT do sensor ESP32
+alerta-corrego.service        loaded active running Alerta Corrego - painel web CitizenTech
+auditd.service                loaded active running Security Auditing Service
+citizentech-monitor.service   loaded active running CitizenTech - monitor de infraestrutura
+nginx.service                 loaded active running A high performance web server and a reverse proxy server
+citizentech-healthcheck.timer loaded active waiting CitizenTech - executa o healthcheck a cada minuto
+
+Legend: LOAD   → Reflects whether the unit definition was properly loaded.
+        ACTIVE → The high-level unit activation state, i.e. generalization of SUB.
+        SUB    → The low-level unit activation state, values depend on unit type.
+
+6 loaded units listed. Pass --all to see loaded but inactive units, too.
+To show all installed unit files use 'systemctl list-unit-files'.
+2026-11-19 20:10:23 [OK] [relatorio_auditoria] Relatório salvo em /var/log/citizentech/relatorios/auditoria_20261119_201023.txt

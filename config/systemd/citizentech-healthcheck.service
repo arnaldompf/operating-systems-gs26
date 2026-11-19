@@ -1,0 +1,7 @@
+# Verifica se a aplicação responde; se não responder, registra e reinicia
+[Unit]
+Description=CitizenTech - healthcheck da aplicação Alerta Corrego
+
+[Service]
+Type=oneshot
+ExecStart=${INSTALL_DIR}/bin/healthcheck.sh

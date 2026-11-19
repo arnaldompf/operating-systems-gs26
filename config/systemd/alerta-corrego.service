@@ -1,0 +1,29 @@
+# Aplicação web do Alerta Córrego (gunicorn + Flask)
+# Gerado a partir de config/systemd/alerta-corrego.service pelo 02_app.sh
+[Unit]
+Description=Alerta Corrego - painel web CitizenTech
+After=network-online.target systemd-networkd.service
+Wants=network-online.target
+StartLimitIntervalSec=300
+StartLimitBurst=10
+OnFailure=citizentech-falha@%n.service
+
+[Service]
+Type=simple
+User=${APP_USER}
+Group=${APP_USER}
+WorkingDirectory=${APP_DIR}
+EnvironmentFile=/etc/citizentech/app.env
+ExecStart=${APP_DIR}/venv/bin/gunicorn --workers ${APP_WORKERS} --bind ${INTERNAL_IP}:${APP_PORT} --access-logfile ${LOG_DIR}/app/access.log --error-logfile ${LOG_DIR}/app/error.log app:app
+Restart=always
+RestartSec=3
+
+# Endurecimento: a app só escreve nos diretórios de dados e de log
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=${APP_DATA_DIR} ${LOG_DIR}/app
+
+[Install]
+WantedBy=multi-user.target

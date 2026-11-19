@@ -1,0 +1,59 @@
+2026-11-19 20:07:39 [INFO] [teste_falha] ===== Iniciando teste_falha (usuário: ubuntu, run_id: 20261119200739-171196) =====
+
+2026-11-19 20:07:39 [INFO] [teste_falha] ---------- TESTE: kill -9 em alerta-corrego ----------
+2026-11-19 20:07:39 [INFO] [teste_falha] Estado antes: active, PID 170478, reinícios até agora: 0
+2026-11-19 20:07:39 [WARN] [teste_falha] Matando o processo 170478 com SIGKILL...
+2026-11-19 20:07:42 [OK] [teste_falha] alerta-corrego voltou sozinho em 3101 ms - novo PID 171263 (reinícios: 1)
+Nov 19 20:07:39 alerta-corrego-srv01 systemd[1]: alerta-corrego.service: Failed with result 'signal'.
+Nov 19 20:07:39 alerta-corrego-srv01 systemd[1]: alerta-corrego.service: Triggering OnFailure= dependencies.
+Nov 19 20:07:42 alerta-corrego-srv01 systemd[1]: alerta-corrego.service: Scheduled restart job, restart counter is at 1.
+Nov 19 20:07:42 alerta-corrego-srv01 systemd[1]: Started alerta-corrego.service - Alerta Corrego - painel web CitizenTech.
+2026-11-19 20:07:44 [OK] [teste_falha] Painel respondendo de novo em http://127.0.0.1/
+
+2026-11-19 20:07:44 [INFO] [teste_falha] ---------- TESTE: kill -9 em citizentech-monitor ----------
+2026-11-19 20:07:44 [INFO] [teste_falha] Estado antes: active, PID 170874, reinícios até agora: 0
+2026-11-19 20:07:44 [WARN] [teste_falha] Matando o processo 170874 com SIGKILL...
+2026-11-19 20:07:49 [OK] [teste_falha] citizentech-monitor voltou sozinho em 5110 ms - novo PID 171339 (reinícios: 1)
+Nov 19 20:07:49 alerta-corrego-srv01 monitor.sh[171339]: 2026-11-19 20:07:49 [INFO] [monitor] ===== Iniciando monitor (usuário: root, run_id: 20261119200749-171339) =====
+Nov 19 20:07:49 alerta-corrego-srv01 citizentech/monitor[171353]: ===== Iniciando monitor (usuário: root, run_id: 20261119200749-171339) =====
+Nov 19 20:07:49 alerta-corrego-srv01 monitor.sh[171339]: 2026-11-19 20:07:49 [INFO] [monitor] Monitor iniciado: intervalo 15s, limites CPU 80% / MEM 80% / DISCO 85%
+Nov 19 20:07:49 alerta-corrego-srv01 systemd[1]: Started citizentech-monitor.service - CitizenTech - monitor de infraestrutura.
+
+2026-11-19 20:07:49 [INFO] [teste_falha] ---------- TESTE: sobrecarga de CPU (limite 80%) ----------
+2026-11-19 20:07:49 [INFO] [teste_falha] Iniciando stress-ng em 2 núcleos por 60s
+2026-11-19 20:07:51 [OK] [teste_falha] Detectado no alertas.log:
+2026-11-19 20:07:50 [ALERTA] CPU em 94% (limite 80%) - maior consumo: stress-ng-cpu (pid 171383, 98.9%)
+2026-11-19 20:07:51 [INFO] [teste_falha] Aguardando o fim da carga para registrar a recuperação...
+2026-11-19 20:08:55 [OK] [teste_falha] Detectado no alertas.log:
+2026-11-19 20:08:55 [RECUPERADO] CPU voltou ao normal: 0% (limite 80%)
+
+2026-11-19 20:08:55 [INFO] [teste_falha] ---------- TESTE: consumo de memória (limite 80%) ----------
+2026-11-19 20:08:55 [INFO] [teste_falha] Memória em 22%. Alocando 1297 MB por 45s
+2026-11-19 20:09:11 [OK] [teste_falha] Detectado no alertas.log:
+2026-11-19 20:09:11 [ALERTA] MEMORIA em 89% (limite 80%) - maior consumo: stress-ng-vm (pid 171608, 66.1%)
+2026-11-19 20:09:44 [OK] [teste_falha] Detectado no alertas.log:
+2026-11-19 20:09:43 [RECUPERADO] MEMORIA voltou ao normal: 20% (limite 80%)
+
+2026-11-19 20:09:44 [INFO] [teste_falha] ---------- TESTE: disco cheio (limite 85%) ----------
+2026-11-19 20:09:44 [INFO] [teste_falha] Disco em 15%. Criando arquivo de 13736 MB
+2026-11-19 20:09:44 [INFO] [teste_falha] Disco agora em 89%
+2026-11-19 20:10:00 [OK] [teste_falha] Detectado no alertas.log:
+2026-11-19 20:09:59 [ALERTA] DISCO em 89% (limite 85%) - partição /, livre: 2.2G
+2026-11-19 20:10:00 [INFO] [teste_falha] Arquivo removido, disco em 15%
+2026-11-19 20:10:17 [OK] [teste_falha] Detectado no alertas.log:
+2026-11-19 20:10:15 [RECUPERADO] DISCO voltou ao normal: 15% (limite 85%)
+
+2026-11-19 20:10:17 [INFO] [teste_falha] ---------- Últimos alertas registrados ----------
+2026-11-19 01:23:58 [ALERTA] MEMORIA em 88% (limite 80%) - maior consumo: stress-ng-vm (pid 14309, 68.1%)
+2026-11-19 01:24:30 [RECUPERADO] MEMORIA voltou ao normal: 19% (limite 80%)
+2026-11-19 06:22:28 [ALERTA] Serviço nginx está deactivating
+2026-11-19 06:22:44 [RECUPERADO] Serviço nginx voltou a ficar ativo
+2026-11-19 20:07:39 [ALERTA] [systemd] Serviço alerta-corrego.service entrou em estado de falha: signal
+2026-11-19 20:07:44 [ALERTA] [systemd] Serviço citizentech-monitor.service entrou em estado de falha: signal
+2026-11-19 20:07:50 [ALERTA] CPU em 94% (limite 80%) - maior consumo: stress-ng-cpu (pid 171383, 98.9%)
+2026-11-19 20:08:55 [RECUPERADO] CPU voltou ao normal: 0% (limite 80%)
+2026-11-19 20:09:11 [ALERTA] MEMORIA em 89% (limite 80%) - maior consumo: stress-ng-vm (pid 171608, 66.1%)
+2026-11-19 20:09:43 [RECUPERADO] MEMORIA voltou ao normal: 20% (limite 80%)
+2026-11-19 20:09:59 [ALERTA] DISCO em 89% (limite 85%) - partição /, livre: 2.2G
+2026-11-19 20:10:15 [RECUPERADO] DISCO voltou ao normal: 15% (limite 85%)
+2026-11-19 20:10:17 [OK] [teste_falha] Teste de falha 'todos' concluído. Trilha completa: sudo /opt/citizentech/bin/relatorio_auditoria.sh

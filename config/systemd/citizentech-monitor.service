@@ -1,0 +1,22 @@
+# Monitoramento de CPU, memória, disco e serviços - tolerante a falhas:
+#   Restart=always   -> volta sozinho se for morto ou travar
+#   WatchdogSec=60   -> se o loop parar de responder por 60 s, o systemd reinicia
+#   OnFailure=       -> registra a falha no log de alertas
+[Unit]
+Description=CitizenTech - monitor de infraestrutura
+After=network-online.target
+StartLimitIntervalSec=300
+StartLimitBurst=20
+OnFailure=citizentech-falha@%n.service
+
+[Service]
+Type=notify
+NotifyAccess=all
+ExecStart=${INSTALL_DIR}/bin/monitor.sh
+Restart=always
+RestartSec=5
+WatchdogSec=60
+Nice=-5
+
+[Install]
+WantedBy=multi-user.target
