@@ -4,8 +4,8 @@ Global Solution 2026.2 · CitizenTech · Engenharia de Software · 3º ano (Fev)
 
 | | |
 |---|---|
-| **Integrantes** | Arnaldo Filho — RM555780 · INTEGRANTE - rm |
-| **Vídeo de demonstração** | _(link do YouTube)_ |
+| **Integrantes** | Arnaldo Filho — RM555780 · Fabricio Junior - RM555017 |
+| **Vídeo de demonstração** | _(https://youtu.be/Wai1QBtXei0)_ |
 | **Aplicação no ar** | http://201.23.78.192/ |
 
 ## Ficha da CitizenTech
